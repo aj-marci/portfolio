@@ -45,24 +45,6 @@ const Header = () => {
     }
   };
 
-  /*const navSocials = props.data
-
-  .filter((socials) => { 
-   return socials.icon == true; 
- }) 
-
- .sort((a, b) => { 
-   return a.socials.icon === b.socials.icon; 
- })
-
-  .map((socials) => {
-    return (
-      <li>
-        {socials.icon}
-      </li>
-    )
-  })*/
-
   return (
     <Box
       position="fixed"
