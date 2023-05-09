@@ -8,7 +8,9 @@ import {
   faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack } from "@chakra-ui/react";
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
+import ProjectsSection from "./ProjectsSection";
+import ContactMeSection from "./ContactMeSection";
 
 const socials = [
   {
@@ -75,24 +77,29 @@ const Header = () => {
           </HStack>
           </nav>
           <Routes>
-            <Route path='my github' component={() => {
+            <Route path='icon' component={() => {
               window.location.href = 'https://github.com/aj-marci';
               return null;
              }}/>
-            <Route path='my linked' component={() => {
+            <Route path='icon' component={() => {
               window.location.href = 'https://linkedin.com/in/a-j-marcinek-318545131/';
               return null;
              }}/>
-            <Route path='email me' component={() => {
+            <Route path='icon' component={() => {
               window.location.href = 'mailto: abmarcinek@gmail.com';
               return null;
              }}/>
             </Routes>
           <nav>
             <HStack spacing={8}>
-              {/* Add links to Projects and Contact me section */}
+            <a onClick={handleClick("projects")} href={"/#projects"}>Projects</a>
+            <a onClick={handleClick("contactme")} href={"/#contact-me"}>Contact Me</a>
             </HStack>
           </nav>
+          <Routes>
+            <Route path="/#projects" element={"projects-section"}/>
+            <Route path="/#contact-me" element={"contactme-section"} />
+          </Routes>
         </HStack>
       </Box>
     </Box>
