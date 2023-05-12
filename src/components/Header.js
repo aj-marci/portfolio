@@ -9,13 +9,12 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack } from "@chakra-ui/react";
 import {Routes, Route} from "react-router-dom";
-import ProjectsSection from "./ProjectsSection";
-import ContactMeSection from "./ContactMeSection";
+
 
 const socials = [
   {
     icon: faEnvelope,
-    url: "mailto: abmarcinek@gmail.com",
+    url: "mailto: mail@gmail.com",
   },
   {
     icon: faGithub,
@@ -35,6 +34,28 @@ const socials = [
   },
 ];
 
+/* const NavPosition = () => {
+  const [navPosition, setNavPosition] = useState({
+        translateX: 0px
+  });
+
+  useEffect(() => {
+    const handleNavPositionChange = (e) => {
+      setMousePosition({
+      translateY: e.clientY,
+    });
+  };
+
+    window.addEventListener("mousemove", handleMousePositionChange);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMousePositionChange);
+    };
+  }, []);
+
+  return ({ navPosition })
+}; */
+
 const Header = () => {
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
@@ -49,7 +70,7 @@ const Header = () => {
 
   return (
     <Box
-      position="fixed"
+      position="absolute"
       top={0}
       left={0}
       right={0}
@@ -57,7 +78,7 @@ const Header = () => {
       transitionProperty="transform"
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
-      backgroundColor="#18181b"
+      bg="#18181b"
     >
       <Box color="lightblue" maxWidth="1280px" margin="0 auto">
         <HStack
@@ -67,26 +88,38 @@ const Header = () => {
           alignItems="center"
         >
           <nav>
-          <HStack spacing={8} >
-            <a href="https://github.com/aj-marci" target="blank">
+          <HStack spacing={8}>
+            <a href="https://github.com" target="blank">
               <FontAwesomeIcon icon={faGithub} size="2x" /></a>
-            <a href="https://linkedin.com/in/a-j-marcinek-318545131/" target="blank">
+            <a href="https://linkedin.com" target="blank">
               <FontAwesomeIcon icon={faLinkedin} size="2x" /></a>
             <a href="mailto: abmarcinek@gmail.com" target="blank">
               <FontAwesomeIcon icon={faEnvelope} size="2x" /></a>
+              <a href="https://medium.com" target="blank">
+              <FontAwesomeIcon icon={faMedium} size="2x" /></a>
+              <a href="https://stackoverflow.com" target="blank">
+              <FontAwesomeIcon icon={faStackOverflow} size="2x" /></a>
           </HStack>
           </nav>
           <Routes>
             <Route path='icon' component={() => {
-              window.location.href = 'https://github.com/aj-marci';
+              window.location.href = 'https://github.com';
               return null;
              }}/>
             <Route path='icon' component={() => {
-              window.location.href = 'https://linkedin.com/in/a-j-marcinek-318545131/';
+              window.location.href = 'https://linkedin.com';
               return null;
              }}/>
             <Route path='icon' component={() => {
-              window.location.href = 'mailto: abmarcinek@gmail.com';
+              window.location.href = 'mailto: mail@gmail.com';
+              return null;
+             }}/>
+              <Route path='icon' component={() => {
+              window.location.href = 'https://medium.com';
+              return null;
+             }}/>
+              <Route path='icon' component={() => {
+              window.location.href = 'https://stackoverflow.com';
               return null;
              }}/>
             </Routes>
