@@ -33,29 +33,8 @@ const socials = [
     url: "https://stackoverflow.com",
   },
 ];
-
-/* const NavPosition = () => {
-  const [navPosition, setNavPosition] = useState({
-        translateX: 0px
-  });
-
-  useEffect(() => {
-    const handleNavPositionChange = (e) => {
-      setMousePosition({
-      translateY: e.clientY,
-    });
-  };
-
-    window.addEventListener("mousemove", handleMousePositionChange);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMousePositionChange);
-    };
-  }, []);
-
-  return ({ navPosition })
-}; */
-
+ 
+  
 const Header = () => {
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
@@ -89,50 +68,24 @@ const Header = () => {
         >
           <nav>
           <HStack spacing={8}>
-            <a href="https://github.com" target="blank">
-              <FontAwesomeIcon icon={faGithub} size="2x" /></a>
-            <a href="https://linkedin.com" target="blank">
-              <FontAwesomeIcon icon={faLinkedin} size="2x" /></a>
-            <a href="mailto: abmarcinek@gmail.com" target="blank">
-              <FontAwesomeIcon icon={faEnvelope} size="2x" /></a>
-              <a href="https://medium.com" target="blank">
-              <FontAwesomeIcon icon={faMedium} size="2x" /></a>
-              <a href="https://stackoverflow.com" target="blank">
-              <FontAwesomeIcon icon={faStackOverflow} size="2x" /></a>
+              {socials.map(({ icon, url }) => (
+                <a
+                key={url}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon icon={icon} url={url} size="2px"/>
+                </a>
+              ))}
           </HStack>
           </nav>
-          <Routes>
-            <Route path='icon' component={() => {
-              window.location.href = 'https://github.com';
-              return null;
-             }}/>
-            <Route path='icon' component={() => {
-              window.location.href = 'https://linkedin.com';
-              return null;
-             }}/>
-            <Route path='icon' component={() => {
-              window.location.href = 'mailto: mail@gmail.com';
-              return null;
-             }}/>
-              <Route path='icon' component={() => {
-              window.location.href = 'https://medium.com';
-              return null;
-             }}/>
-              <Route path='icon' component={() => {
-              window.location.href = 'https://stackoverflow.com';
-              return null;
-             }}/>
-            </Routes>
           <nav>
             <HStack spacing={8}>
             <a onClick={handleClick("projects")} href={"/#projects"}>Projects</a>
             <a onClick={handleClick("contactme")} href={"/#contact-me"}>Contact Me</a>
             </HStack>
           </nav>
-          <Routes>
-            <Route path="/#projects" element={"projects-section"}/>
-            <Route path="/#contact-me" element={"contactme-section"} />
-          </Routes>
         </HStack>
       </Box>
     </Box>
